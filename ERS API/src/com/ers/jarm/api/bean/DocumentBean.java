@@ -1,5 +1,6 @@
 package com.ers.jarm.api.bean;
 
+import java.util.Date;
 import java.util.List;
 
 /*
@@ -48,6 +49,8 @@ public class DocumentBean {
 	private int recRefNo;
 	
 	private List<String> documentIdsList;
+	
+	private Date dateCreated;
 	
 
 	public String getFileName() {
@@ -128,6 +131,14 @@ public class DocumentBean {
 
 	public void setDocumentIdsList(List<String> documentIdsList) {
 		this.documentIdsList = documentIdsList;
+	}
+	
+	public Date getDateCreated() {
+		return dateCreated;
+	}
+
+	public void setDateCreated(Date dateCreated) {
+		this.dateCreated = dateCreated;
 	}
 
 	@Override

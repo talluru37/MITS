@@ -107,7 +107,7 @@ public class PEOperationsImpl {
 
 			if(null!=peOperationsBean)
 			{
-				logger.info("PEOperationsBean Object Received from ERS : " + peOperationsBean.toString());
+				logger.debug("PEOperationsBean Object Received from ERS : " + peOperationsBean.toString());
 
 				if(null!=peOperationsBean.getWorkflowName())
 				{
@@ -560,7 +560,7 @@ public class PEOperationsImpl {
 		{
 			if(null!=peOperationsBean)
 			{
-				logger.info("PEOperationsBean Object Received from ERS : " + peOperationsBean.toString());
+				logger.debug("PEOperationsBean Object Received from ERS : " + peOperationsBean.toString());
 
 				rmConnection = new RMConnection();
 
@@ -600,7 +600,7 @@ public class PEOperationsImpl {
 
 							stepElement = (VWStepElement) queuequery.next();
 
-							logger.info("Step element : " + stepElement.getWorkObjectNumber() + " : " + stepElement.getWorkflowNumber());
+							logger.debug("Step element : " + stepElement.getWorkObjectNumber() + " : " + stepElement.getWorkflowNumber());
 
 							vwParameters = stepElement.getParameters(VWFieldType.ALL_FIELD_TYPES, VWStepElement.FIELD_USER_DEFINED);
 
@@ -744,7 +744,7 @@ public class PEOperationsImpl {
 		{
 			if(null!=peOperationsBean)
 			{
-				logger.info("PEOperationsBean Object Received from ERS : " + peOperationsBean.toString());
+				logger.debug("PEOperationsBean Object Received from ERS : " + peOperationsBean.toString());
 
 				rmConnection = new RMConnection();
 
@@ -775,7 +775,7 @@ public class PEOperationsImpl {
 
 							stepElement = (VWStepElement) queuequery.next();
 
-							logger.info("Step element : " + stepElement.getWorkObjectNumber() + " : " + stepElement.getWorkflowNumber());
+							logger.debug("Step element : " + stepElement.getWorkObjectNumber() + " : " + stepElement.getWorkflowNumber());
 
 							vwParameters = stepElement.getParameters(VWFieldType.ALL_FIELD_TYPES, VWStepElement.FIELD_USER_DEFINED);
 
@@ -906,7 +906,7 @@ public class PEOperationsImpl {
 		{
 			if(null!=peOperationsBean)
 			{
-				logger.info("peOperationsBean : " + peOperationsBean.toString());
+				logger.debug("peOperationsBean : " + peOperationsBean.toString());
 
 				rmConnection = new RMConnection();
 				vwSession = rmConnection.getWSIVWsession();
@@ -946,7 +946,7 @@ public class PEOperationsImpl {
 									}
 									if(peOperationsBean.getStepRespose().equalsIgnoreCase(ERSConstants.WORKFLOW_RESPONSE_REJECT))
 									{
-										logger.info("Selected response" + peOperationsBean.getStepRespose() + "::" + ERSConstants.WORKFLOW_RESPONSE_REJECT);
+										logger.debug("Selected response" + peOperationsBean.getStepRespose() + "::" + ERSConstants.WORKFLOW_RESPONSE_REJECT);
 										
 										vwStepElement.setSelectedResponse(ERSConstants.WORKFLOW_RESPONSE_REJECT);
 										
@@ -1203,7 +1203,7 @@ public class PEOperationsImpl {
 		{
 			if(null!=peOperationsBean)
 			{
-				logger.info("PEOperationsBean Object Received from ERS : " + peOperationsBean.toString());
+				logger.debug("PEOperationsBean Object Received from ERS : " + peOperationsBean.toString());
 
 				rmConnection = new RMConnection();
 
@@ -1370,7 +1370,7 @@ public class PEOperationsImpl {
 		{
 			if(null!=peOperationsBean)
 			{
-				logger.info("PEOperationsBean Object Received from ERS : " + peOperationsBean.toString());
+				logger.debug("PEOperationsBean Object Received from ERS : " + peOperationsBean.toString());
 
 				rmConnection = new RMConnection();
 
@@ -1395,7 +1395,7 @@ public class PEOperationsImpl {
 									+ VWQueue.QUERY_READ_LOCKED, "RequestorId=:A",
 									new String[]{peOperationsBean.getRequestorId()}, VWFetchType.FETCH_TYPE_STEP_ELEMENT);
 							
-							logger.info("queuequery : " + queuequery.toString());
+							logger.debug("queuequery : " + queuequery.toString());
 						} 
 
 						while (queuequery.hasNext()) {
@@ -1535,7 +1535,7 @@ public class PEOperationsImpl {
 		{
 			if(null!=peOperationsBean)
 			{
-				logger.info("PEOperationsBean Object Received from ERS : " + peOperationsBean.toString());
+				logger.debug("PEOperationsBean Object Received from ERS : " + peOperationsBean.toString());
 
 				rmConnection = new RMConnection();
 
@@ -1701,7 +1701,7 @@ public class PEOperationsImpl {
 		{
 			if(null!=peOperationsBean)
 			{
-				logger.info("PEOperationsBean Object Received from ERS : " + peOperationsBean.toString());
+				logger.debug("PEOperationsBean Object Received from ERS : " + peOperationsBean.toString());
 
 				rmConnection = new RMConnection();
 
@@ -1711,7 +1711,7 @@ public class PEOperationsImpl {
 				{
 					workitemBeanList = new ArrayList<WorkitemBean>();
 
-					if(null==peOperationsBean.getWobNumber() && peOperationsBean.getWorkflowName() == null) {						
+					if(null==peOperationsBean.getWobNumber()) {						
 
 						logger.error("WobNumber or Workflow name values are null OR blank. WobNumber or Workflow name are mandatory for workitem retrieval.");
 
@@ -1933,7 +1933,7 @@ public class PEOperationsImpl {
 		{
 			if(null!=peOperationsBean)
 			{
-				logger.info("peOperationsBean : " + peOperationsBean.toString());
+				logger.debug("peOperationsBean : " + peOperationsBean.toString());
 
 				rmConnection = new RMConnection();
 				vwSession = rmConnection.getWSIVWsession();
@@ -2094,7 +2094,7 @@ public class PEOperationsImpl {
 		{
 			if(null!=peOperationsBean)
 			{
-				logger.info("peOperationsBean : " + peOperationsBean.toString());
+				logger.debug("peOperationsBean : " + peOperationsBean.toString());
 
 				rmConnection = new RMConnection();
 
@@ -2118,7 +2118,7 @@ public class PEOperationsImpl {
 
 										"F_WobNum=:A", new String[]{peOperationsBean.getWobNumber()}, VWFetchType.FETCH_TYPE_STEP_ELEMENT);
 
-								logger.info("queuequery : " + queuequery.fetchCount());
+								logger.debug("queuequery : " + queuequery.fetchCount());
 
 								if(queuequery.fetchCount() == 1) {
 

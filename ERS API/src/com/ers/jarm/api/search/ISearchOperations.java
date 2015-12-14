@@ -2,8 +2,8 @@ package com.ers.jarm.api.search;
 
 import java.util.List;
 
+import com.ers.jarm.api.bean.DocumentBean;
 import com.ers.jarm.api.bean.SearchBean;
-import com.ers.jarm.api.bean.SearchResultsBean;
 import com.ers.jarm.api.exception.ERSException;
 
 /*
@@ -33,6 +33,6 @@ import com.ers.jarm.api.exception.ERSException;
  */
 public interface ISearchOperations {
 
-	public List<SearchResultsBean> doContentSearch(SearchBean searchBean) throws ERSException;
+	public List<DocumentBean> doContentSearch(SearchBean searchBean) throws ERSException;
 
 }

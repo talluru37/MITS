@@ -97,9 +97,9 @@ public class RecordFolderOperationsImpl implements IRecordFolderOperations {
 	 */
 	public RecordFolderBean createRecordFolder(RecordFolderBean folderBean, VolumeBean volumeBean) throws ERSException {
 
-		logger.info("folderBean : " + folderBean.toString());
+		logger.debug("folderBean : " + folderBean.toString());
 
-		logger.info("volumeBean : " + volumeBean.toString());
+		logger.debug("volumeBean : " + volumeBean.toString());
 
 		String folderType = null;
 
@@ -228,7 +228,7 @@ public class RecordFolderOperationsImpl implements IRecordFolderOperations {
 
 							dispScheduleId = dispositionMap.get(folderBean.getRandDPeriod());
 
-							logger.info("dispScheduleId : " + dispScheduleId);
+							logger.debug("dispScheduleId : " + dispScheduleId);
 
 							if(dispScheduleId == null) {
 
@@ -247,7 +247,7 @@ public class RecordFolderOperationsImpl implements IRecordFolderOperations {
 
 							folderBean.setRecordFolderId(newRecordFolder.getProperties().getGuidValue("Id"));
 
-							logger.info("Electronic Record Folder Id : " + newRecordFolder.getProperties().getGuidValue("Id"));
+							logger.debug("Electronic Record Folder Id : " + newRecordFolder.getProperties().getGuidValue("Id"));
 
 							volumeId = addPropertiesToVolume(newRecordFolder, volumeBean);
 
@@ -408,7 +408,7 @@ public class RecordFolderOperationsImpl implements IRecordFolderOperations {
 
 								dispScheduleId = dispositionMap.get(folderBean.getRandDPeriod());
 
-								logger.info("dispScheduleId : " + dispScheduleId);
+								logger.debug("dispScheduleId : " + dispScheduleId);
 
 								if(dispScheduleId == null) {
 
@@ -427,7 +427,7 @@ public class RecordFolderOperationsImpl implements IRecordFolderOperations {
 
 								folderBean.setRecordFolderId(newRecordFolder.getProperties().getGuidValue("Id"));
 
-								logger.info("Physical Record Folder Id : " + newRecordFolder.getProperties().getGuidValue("Id"));
+								logger.debug("Physical Record Folder Id : " + newRecordFolder.getProperties().getGuidValue("Id"));
 
 								volumeId = addPropertiesToVolume(newRecordFolder, volumeBean);
 
@@ -562,13 +562,13 @@ public class RecordFolderOperationsImpl implements IRecordFolderOperations {
 
 			if(folderBean != null) {
 
-				logger.info("RecordFolderBean : " + folderBean.toString());
+				logger.debug("RecordFolderBean : " + folderBean.toString());
 
 				rmConnection = new RMConnection();
 
 				fileplanRepository = rmConnection.getFilePlanRepositoryByName(ResourceLoader.getMessageProperties().getProperty(ERSConstants.FILEPLAN_OBJECTSTORE));	
 
-				logger.info("FilePlanRepository name : " + fileplanRepository);				
+				logger.debug("FilePlanRepository name : " + fileplanRepository);				
 
 				recordFolder = RMFactory.RecordFolder.fetchInstance(fileplanRepository, folderBean.getRecordFolderId(), null);
 
@@ -652,13 +652,13 @@ public class RecordFolderOperationsImpl implements IRecordFolderOperations {
 
 			if(folderBean != null) {
 
-				logger.info("RecordFolderBean : " + folderBean.toString());
+				logger.debug("RecordFolderBean : " + folderBean.toString());
 
 				rmConnection = new RMConnection();
 
 				fileplanRepository = rmConnection.getFilePlanRepositoryByName(ResourceLoader.getMessageProperties().getProperty(ERSConstants.FILEPLAN_OBJECTSTORE));	
 
-				logger.info("FilePlanRepository name : " + fileplanRepository);				
+				logger.debug("FilePlanRepository name : " + fileplanRepository);				
 
 				recordFolder = RMFactory.RecordFolder.fetchInstance(fileplanRepository, folderBean.getRecordFolderId(), null);
 
@@ -739,7 +739,7 @@ public class RecordFolderOperationsImpl implements IRecordFolderOperations {
 	 */
 	public RecordFolderBean viewRecordFolderMetadata(RecordFolderBean folderBean) throws ERSException
 	{
-		logger.info("folderBean : " + folderBean.toString());
+		logger.debug("folderBean : " + folderBean.toString());
 
 		RMPropertyDescription rmPropertyDescription = null;
 
@@ -765,7 +765,7 @@ public class RecordFolderOperationsImpl implements IRecordFolderOperations {
 		{
 			logger.info("Enter the viewRecordFolderMetadata() in viewEectronicRecordFolderMetadata class here");
 
-			logger.info("folderBean : " + folderBean.toString());
+			logger.debug("folderBean : " + folderBean.toString());
 
 			if(null!=folderBean && null!=folderBean.getRecordFolderId())
 			{
@@ -793,7 +793,7 @@ public class RecordFolderOperationsImpl implements IRecordFolderOperations {
 
 						propertyValue = folder.getProperties().get(propertyName).getObjectValue();
 
-						logger.info("propertyName : " + propertyName + ":" + propertyValue);
+						logger.debug("propertyName : " + propertyName + ":" + propertyValue);
 
 						dataMap.put(propertyName, propertyValue);
 
@@ -858,7 +858,7 @@ public class RecordFolderOperationsImpl implements IRecordFolderOperations {
 
 					// Some more Physical Folder properties can be added here
 
-					logger.info("folderBean : " + folderBean.toString());
+					logger.debug("folderBean : " + folderBean.toString());
 				}
 				else
 				{
@@ -949,7 +949,7 @@ public class RecordFolderOperationsImpl implements IRecordFolderOperations {
 
 			if(null!=folderBean && null!=folderBean.getRecordFolderId())
 			{
-				logger.info("folderBean : " + folderBean.toString());
+				logger.debug("folderBean : " + folderBean.toString());
 
 				rmConnection= new RMConnection();
 
@@ -969,7 +969,7 @@ public class RecordFolderOperationsImpl implements IRecordFolderOperations {
 
 				recordFolder.save(RMRefreshMode.Refresh);
 
-				logger.info("End of  the MoveRecordFolder class here");
+				logger.debug("End of  the MoveRecordFolder class here");
 
 			} else {
 
@@ -1018,7 +1018,7 @@ public class RecordFolderOperationsImpl implements IRecordFolderOperations {
 	 */
 	public void closeRecordFolder(RecordFolderBean recordFolderBean) throws ERSException {
 
-		logger.info("Entered into manualCloseRecordFolder method");		
+		logger.debug("Entered into manualCloseRecordFolder method");		
 
 		RecordContainer recordClose = null;
 
@@ -1034,13 +1034,13 @@ public class RecordFolderOperationsImpl implements IRecordFolderOperations {
 
 			if(null!=recordFolderBean && null!=recordFolderBean.getRecordFolderId())
 			{
-				logger.info("folderBean : " + recordFolderBean.toString());
+				logger.debug("folderBean : " + recordFolderBean.toString());
 
 				rmConnection = new RMConnection();
 
 				fileplanRepository = rmConnection.getFilePlanRepositoryByName(ResourceLoader.getMessageProperties().getProperty(ERSConstants.FILEPLAN_OBJECTSTORE));	
 
-				logger.info("folderBean : " + recordFolderBean.toString());
+				logger.debug("folderBean : " + recordFolderBean.toString());
 
 				recordFolderId = recordFolderBean.getRecordFolderId();
 
@@ -1050,7 +1050,7 @@ public class RecordFolderOperationsImpl implements IRecordFolderOperations {
 
 				recordClose.close(reasonToClose);
 
-				logger.info("End manually closed folder");
+				logger.debug("End manually closed folder");
 
 			} else {
 
@@ -1104,7 +1104,7 @@ public class RecordFolderOperationsImpl implements IRecordFolderOperations {
 
 			if(null!=folderBean && null!=folderBean.getRecordFolderId())
 			{
-				logger.info("folderBean : " + folderBean.toString());
+				logger.debug("folderBean : " + folderBean.toString());
 
 				rmConnection = new RMConnection();
 

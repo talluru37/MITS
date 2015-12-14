@@ -88,7 +88,7 @@ public class RMConnection {
 
 		EncryptionUtil encryptionUtil=null;
 		
-		logger.info("Entered into getJarmDomainWithRMWSIConnection method");
+		logger.debug("Entered into getJarmDomainWithRMWSIConnection method");
 
 		try {
 
@@ -98,7 +98,7 @@ public class RMConnection {
 				{
 					encryptionUtil = new EncryptionUtil();
 					
-					logger.info(messageProperties.getProperty(ERSConstants.WSI_CONNECTION_URI) + messageProperties.getProperty(ERSConstants.USER_NAME));
+					logger.debug(messageProperties.getProperty(ERSConstants.WSI_CONNECTION_URI) + messageProperties.getProperty(ERSConstants.USER_NAME));
 					
 					jarmConnection = RMFactory.DomainConnection.createInstance(DomainType.P8_CE, messageProperties.getProperty(ERSConstants.WSI_CONNECTION_URI), null);
 					
@@ -111,7 +111,7 @@ public class RMConnection {
 					// For P8, domainIdent=null indicates 'local' domain.
 					jarmDomain = RMFactory.RMDomain.fetchInstance(jarmConnection, null, RMPropertyFilter.MinimumPropertySet);	
 
-					logger.info("JARM Domain Name" + jarmDomain.getName() + " JARM Current User : " + jarmDomain.fetchCurrentUser().getDisplayName());
+					logger.debug("JARM Domain Name" + jarmDomain.getName() + " JARM Current User : " + jarmDomain.fetchCurrentUser().getDisplayName());
 
 					return jarmDomain;
 				}
@@ -151,7 +151,7 @@ public class RMConnection {
 
 		FilePlanRepository fileplanRepository = null;
 
-		logger.info("Entered into getFilePlanRepositoryByName method ");
+		logger.debug("Entered into getFilePlanRepositoryByName method ");
 
 		try	{
 
@@ -171,7 +171,7 @@ public class RMConnection {
 				{
 					break;
 				}
-				logger.info("Fileplan Repository : " + fileplanRepository.getSymbolicName());				
+				logger.debug("Fileplan Repository : " + fileplanRepository.getSymbolicName());				
 			}
 			return fileplanRepository;
 
@@ -196,7 +196,7 @@ public class RMConnection {
 	 */
 	public ContentRepository getRecordsRepositoryByName(String RecordsRepositorySymbolicName) throws ERSException {
 
-		logger.info("Entered into getRecordsRepositoryByName method " + RecordsRepositorySymbolicName);
+		logger.debug("Entered into getRecordsRepositoryByName method " + RecordsRepositorySymbolicName);
 
 		ContentRepository contentRepository = null;
 
@@ -216,13 +216,13 @@ public class RMConnection {
 
 				contentRepository = iterContentRepository.next();
 				
-				logger.info("contentRepository : " + contentRepository.getSymbolicName());
+				logger.debug("contentRepository : " + contentRepository.getSymbolicName());
 
 				if(contentRepository.getSymbolicName().equalsIgnoreCase(RecordsRepositorySymbolicName))
 				{
 					break;
 				}
-				logger.info("Record Content Repository : " + contentRepository.getSymbolicName());
+				logger.debug("Record Content Repository : " + contentRepository.getSymbolicName());
 				//return contentRepository ;	
 			}
 
@@ -248,7 +248,7 @@ public class RMConnection {
 	 */
 	public VWSession getWSIVWsession() throws ERSException {
 
-		logger.info("Entered into getWSIVWsession method");
+		logger.debug("Entered into getWSIVWsession method");
 
 		VWSession vwSession = null;
 		
@@ -266,7 +266,7 @@ public class RMConnection {
 			//calling the log on method  here
 			vwSession.logon(ResourceLoader.getMessageProperties().getProperty(ERSConstants.USER_NAME), ResourceLoader.getMessageProperties().getProperty(ERSConstants.PASS_WORD), ResourceLoader.getMessageProperties().getProperty(ERSConstants.CONNECTION_POINT));
 
-			logger.info("The PE connection is established" + vwSession.getConnectionPointName());
+			logger.debug("The PE connection is established" + vwSession.getConnectionPointName());
 
 		} catch (VWException objException) {
 
